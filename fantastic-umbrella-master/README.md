@@ -19,8 +19,9 @@
   ## Usage
   ![./Develop/image/e-commerce.png](./Develop/image/e-commerce.png)
 
-  For a video walk-through, please click on the link [https://youtu.be/6JQF7C3CFa8](https://youtu.be/6JQF7C3CFa8)
-
+  For a video walk-through, please click on the link 
+  * Part 1: [https://youtu.be/m6Z7emyhVmo](https://youtu.be/m6Z7emyhVmo)
+  * Part 2: [https://youtu.be/n7gIwfc0NWQ](https://youtu.be/n7gIwfc0NWQ)
   ## Features
   E-commerce Back-end 
     

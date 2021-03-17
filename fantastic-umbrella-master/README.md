@@ -17,7 +17,7 @@
   You have to clone the repository on to your local machine. Once repo has been cloned, open terminal and run `npm run server`.
     
   ## Usage
-  ![./image/e-commerce.png](./image/e-commerce.png)
+  ![../image/e-commerce.png](../image/e-commerce.png)
 
   For a video walk-through, please click on the link [https://youtu.be/6JQF7C3CFa8](https://youtu.be/6JQF7C3CFa8)
 

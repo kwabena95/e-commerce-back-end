@@ -1,7 +1,7 @@
 # E-commerce Back-end 
 
   ## Description
-  A  back-end for an e-commerce site. Using an Express.js API and configureing it to use Sequelize to interact with a MySQL database.
+  A  back-end for an e-commerce site. Using an Express.js API and configuring it to use Sequelize to interact with a MySQL database.
     
   ## Table of Contents (Optional)
   If your README is very long, add a table of contents to make it easy for users to find what they need.

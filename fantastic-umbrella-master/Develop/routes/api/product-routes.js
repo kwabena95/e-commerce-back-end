@@ -11,10 +11,14 @@ router.get('/', (req, res) => {
   Product.findAll({
     include: [
       {
-        model: Category
+        model: Category,
+        attributes: ['category_name']
       },
       {
-        model: Tag
+        model: Tag,
+        attributes: ['tag_name'],
+        through: ProductTag,
+
       }
     ]
   }).then(dbProduct => res.json(dbProduct))
@@ -29,15 +33,16 @@ router.get('/:id', (req, res) => {
   // find a single product by its `id`
   // be sure to include its associated Category and Tag data
   Product.findOne({
-    where: {
-      id: req.params.id
-    },
     include: [
       {
-        model: Category
+        model: Category,
+        attributes: ['category_name']
       },
       {
-        model: Tag
+        model: Tag,
+        attributes: ['tag_name'],
+        through: ProductTag,
+
       }
     ]
   }).then(dbProduct => res.json(dbProduct))
@@ -57,7 +62,14 @@ router.post('/', (req, res) => {
       tagIds: [1, 2, 3, 4]
     }
   */
-  Product.create(req.body)
+  console.log("THIS IS ")
+  Product.create(req.body, {
+    product_name: req.body.product_name,
+    price: req.body.price,
+    stock: req.body.stock,
+    category_id: req.body.category_id,
+    tagIds: ['tagIds']
+  })
     .then((product) => {
       // if there's product tags, we need to create pairings to bulk create in the ProductTag model
       if (req.body.tagIds.length) {
@@ -82,11 +94,17 @@ router.post('/', (req, res) => {
 // update product
 router.put('/:id', (req, res) => {
   // update product data
-  Product.update(req.body, {
-    where: {
-      id: req.params.id,
+  Product.update(
+    {
+      product_name: req.body.product_name
     },
-  })
+    {
+      where: {
+        id: req.params.id,
+      }
+    }
+
+  )
     .then((product) => {
       // find all associated tags from ProductTag
       return ProductTag.findAll({ where: { product_id: req.params.id } });
@@ -123,6 +141,16 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   // delete one product by its `id` value
+  Product.destroy(
+    {
+      where: {
+        id: req.params.id
+      }
+    }).then(dbProduct => res.json(dbProduct))
+    .catch(err => {
+      if (err) throw console.log(err);
+      res.status(500).json(err);
+    })
 });
 
 module.exports = router;
